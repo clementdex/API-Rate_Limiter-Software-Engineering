@@ -48,7 +48,7 @@ module.exports.apiRateLimiter = (maxRequestsPerSecond, maxRequestsPerMonth, syst
           return res.status(503).json({ error: 'Service unavailable' });
         }
 
-        // Expire the system's per-second count after 1 second
+        // Expire the system's per-second count after 3 second
         redisClient.expire('rateLimit:system:second', 3);
 
         next();
