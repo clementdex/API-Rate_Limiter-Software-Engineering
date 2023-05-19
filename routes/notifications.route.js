@@ -4,7 +4,7 @@ const { apiRateLimiter } = require('../middlewares/rateLimitMiddleware')
 
 router
 .route('')
-.get(apiRateLimiter(10, 25, 20), (req, res) => {
+.get(apiRateLimiter(5, 50, 15), (req, res) => {
     // Process the request and send notifications
     // ...
     

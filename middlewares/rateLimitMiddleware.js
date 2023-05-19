@@ -33,8 +33,8 @@ module.exports.apiRateLimiter = (maxRequestsPerSecond, maxRequestsPerMonth, syst
         return res.status(429).json({ error: 'Too many requests per month' });
       }
 
-      // Expire the per-month count after 5 second just for testing
-      redisClient.expire(`rateLimit:${clientID}:month`, 5);
+      // // Expire the per-month count after 5 second just for testing
+      // redisClient.expire(`rateLimit:${clientID}:month`, 5);
 
       // Increment the system's per-second request count using Redis' atomic increment operation
       redisClient.incr('rateLimit:system:second', (err, currentSystemRequestsPerSecond) => {
